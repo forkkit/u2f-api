@@ -84,7 +84,7 @@ function ensureSupport() {
         .then(_ensureSupport);
 }
 exports.ensureSupport = ensureSupport;
-function register(registerRequests, signRequests, timeout) {
+function register(appId, registerRequests, signRequests, timeout) {
     if (!Array.isArray(registerRequests))
         registerRequests = [registerRequests];
     if (typeof signRequests === 'number' && typeof timeout === 'undefined') {
@@ -106,13 +106,12 @@ function register(registerRequests, signRequests, timeout) {
                     resolve(response);
                 }
             }
-            var appId = registerRequests[0].appId;
             u2f.register(appId, registerRequests, signRequests, callback, timeout);
         });
     });
 }
 exports.register = register;
-function sign(signRequests, timeout) {
+function sign(appId, challenge, signRequests, timeout) {
     if (!Array.isArray(signRequests))
         signRequests = [signRequests];
     return getBackend()
@@ -128,8 +127,6 @@ function sign(signRequests, timeout) {
                     resolve(response);
                 }
             }
-            var appId = signRequests[0].appId;
-            var challenge = signRequests[0].challenge;
             u2f.sign(appId, challenge, signRequests, callback, timeout);
         });
     });

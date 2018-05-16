@@ -23,6 +23,6 @@ export declare const ErrorNames: {
 };
 export declare function isSupported(): Promise<boolean>;
 export declare function ensureSupport(): Promise<void>;
-export declare function register(registerRequests: RegisterRequest | ReadonlyArray<RegisterRequest>, signRequests: SignRequest | ReadonlyArray<SignRequest>, timeout?: number): Promise<RegisterResponse>;
-export declare function register(registerRequests: RegisterRequest | ReadonlyArray<RegisterRequest>, timeout?: number): Promise<RegisterResponse>;
-export declare function sign(signRequests: SignRequest | ReadonlyArray<SignRequest>, timeout?: number): Promise<SignResponse>;
+export declare function register(appId: String, registerRequests: RegisterRequest | ReadonlyArray<RegisterRequest>, signRequests: SignRequest | ReadonlyArray<SignRequest>, timeout?: number): Promise<RegisterResponse>;
+export declare function register(appId: String, registerRequests: RegisterRequest | ReadonlyArray<RegisterRequest>, timeout?: number): Promise<RegisterResponse>;
+export declare function sign(appId: String, challenge: any, signRequests: SignRequest | ReadonlyArray<SignRequest>, timeout?: number): Promise<SignResponse>;

@@ -124,15 +124,18 @@ export function ensureSupport( )
 }
 
 export function register(
+	appId: String,
 	registerRequests: RegisterRequest | ReadonlyArray< RegisterRequest >,
 	signRequests: SignRequest | ReadonlyArray< SignRequest >,
 	timeout?: number
 ): Promise< RegisterResponse >;
 export function register(
+    appId: String,
 	registerRequests: RegisterRequest | ReadonlyArray< RegisterRequest >,
 	timeout?: number
 ): Promise< RegisterResponse >;
 export function register(
+    appId: String,
 	registerRequests: RegisterRequest | ReadonlyArray< RegisterRequest >,
 	signRequests?: SignRequest | ReadonlyArray< SignRequest > | number,
 	timeout?: number
@@ -171,8 +174,6 @@ export function register(
 				}
 			}
 
-			const appId = registerRequests[ 0 ].appId;
-
 			u2f.register(
 				appId, registerRequests, signRequests, callback, timeout );
 		} );
@@ -180,6 +181,8 @@ export function register(
 }
 
 export function sign(
+	appId: String,
+	challenge: any,
 	signRequests: SignRequest | ReadonlyArray< SignRequest >,
 	timeout?: number
 )
@@ -207,10 +210,6 @@ export function sign(
 					resolve( response );
 				}
 			}
-
-			const appId = signRequests[ 0 ].appId;
-			const challenge = signRequests[ 0 ].challenge;
-
 			u2f.sign( appId, challenge, signRequests, callback, timeout );
 		} );
 	} );

@@ -26,7 +26,7 @@
     "yubikey",
     "promise"
   ],
-  "main": "./dist/index.js",
+  "private": true,
   "types": "./dist/index.d.ts",
   "devDependencies": {
     "@types/mocha": "2.x",
@@ -36,6 +36,8 @@
     "mocha": "5.x",
     "pre-commit": "1.x",
     "rimraf": "2.x",
-    "typescript": "2.7.x"
+    "typescript": "2.7.x",
+    "webpack": "^4.8.3",
+    "webpack-cli": "^2.1.3"
   }
 }
